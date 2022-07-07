@@ -548,7 +548,7 @@ nav a::before {
 
 /* Slide 4 Style */
 .fourth-content {
-	top: 140%!important;
+	top: 130%!important;
   height: 100%;
 	transform: translateY(-140%);
 }
@@ -556,7 +556,7 @@ nav a::before {
   text-align: center;
   margin: 0 auto;
   max-width: 750px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   padding: 40px;
   background-color: rgba(0,0,0,0.9);
 }
