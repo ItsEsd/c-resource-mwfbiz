@@ -290,9 +290,9 @@ nav a::before {
   background-size: cover;
   background-position: fixed;
 }
-.slides .slide:nth-child(1) {
+/* .slides .slide:nth-child(1) {
 
-}
+} */
 .slides .slide:nth-child(2) {
   background-image: url(../images/about-bg.jpg);
   background-position: fixed;
@@ -755,4 +755,8 @@ nav a::before {
     margin-bottom: 20px;
   }
 
+}
+
+#contact button:disabled{
+  cursor: not-allowed;
 }
