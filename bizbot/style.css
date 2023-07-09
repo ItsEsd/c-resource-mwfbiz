@@ -1,6 +1,6 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #161616;
+    background-color: #f0f0f0;
     overflow-x: hidden;
     min-height: 400px;
 }
@@ -13,33 +13,66 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
     display: block;
-    height: 500px;
+    height: 380px;
 }
-#fevidlist,#rrlist{
+.indxngon{
+    width:100%;
+    height:450px;
+    overflow-y: auto;
+    display: block;
+    color:white;
+    background-color: #fd5656;
+    background-image: url('../image/wallpapersden.com_k-new-tales-from-the-borderlands-gaming-2022_1366x768.jpg');;
+    background-repeat: no-repeat;
+    background-size: 130%;
+}
+#fevidlist{
     padding-left:10px;
     padding-right:10px;
-    display: none;
-    color:white;
-    background-color: #2e2e2e;
+    width:100%;
 }
-.fvlist:hover{
-background-color: #444444;
+
+#rrlist{
+    padding-left:10px;
+    padding-right:10px;
+    width:100%;
+}
+.fvlist:hover,.rrclist:hover{
+background-color: #e42f2f;
 cursor: pointer;
 }
+
 .fvlist{
+    padding-top:20px;
+    padding-bottom: 20px;
+    text-align: left;
+    padding-left:6px;
+    border-bottom: 1px solid white;
+    background-color: #4f0f0faf;
+}
+.rrclist{
+    text-align: left;
     padding-top:20px;
     padding-bottom: 20px;
     padding-left:6px;
     border-bottom: 1px solid white;
+    background-color: #4f0f0faf;
 }
-.fvlist input{
+.fvlist input,.rrclist input{
     width:90%;
     border:none;
     background-color: transparent;
     cursor: pointer;
+    color:white;
 }
-.fvlist input:focus{
+.fvlist input:focus,.rrclist input:focus{
     outline:none;
+}
+#youvidlist{
+    background-color: #ff484871;
+}
+#vimvidlist{
+    background-color: #300eef93;
 }
 #falseback{
     top:0px;
@@ -58,20 +91,24 @@ cursor: pointer;
 }
 
 #frameholder{
-    bottom:10px;
+    bottom:0px;
     right:10px;
     position: fixed;
-    padding:10px;
     cursor: move;
     width:380px;
     height:220px;
     z-index:10;
     display: none;
+    background-color: #0fd416d3;
+    overflow: hidden;
 }
-
+#frameholder span{
+    margin-right:5px;
+}
 #frameholder iframe{
-    width:360px;
+    width:100%;
     height:200px;
+    background-color: #161616f0;
 }
 
 #bizbotfrm{
@@ -134,3 +171,78 @@ margin-top:20px;
 margin-right: 0px;
    float: right;
 }
+
+#frmcontnr{
+width:100%;
+height:100%;
+padding-top:10px;
+}
+
+#frmcontnr iframe{
+height:550px;
+}
+
+#srchfrm{
+padding:10px;
+background-color: #161616;
+}
+#srchfrm input{
+    margin:5px;
+
+}
+
+#myModal img,#myModal iframe{
+    width:100%;
+
+}
+
+#functnlt{
+    margin-top:20px;
+    text-align: left;
+    padding:10px;
+    background-color: #161616;
+}
+#functnlt button{
+    margin:5px;
+}
+
+ #ifrmembd {
+    top:0px;
+    left:0px;
+    width:100%;
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    background-color: #161616a1;
+    z-index: 1000;
+
+  }
+#hidefrmvw{
+ border: 0px;
+ padding:5px;
+    width:100%;
+    margin:0 auto;
+    max-width: 800px;
+
+}
+  #urlForm{
+width:100%;
+padding:10px;
+text-align: left;
+  }
+
+  #urlForm button{
+    border:0px;
+    background-color: #2e2e2e;
+    color:white;
+  }
+
+  #ifrmembd iframe{
+    width:100%;
+    max-width: 800px;
+    height:450px;
+    background-color: #161616;
+    border:0px;
+  }
