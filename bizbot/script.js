@@ -2,29 +2,34 @@ document.getElementById('fvlbtn').addEventListener('click',showfeatvidlist);
 function showfeatvidlist(){
 $('#fevidlist').empty();
 $('#youvidlist').empty();
-$('#vimvidlist').empty();
+$('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
 document.getElementById("rrlist").style.display = "none";
     document.getElementById("falseback").style.display = "block";
     var url1 = "https://script.google.com/macros/s/";
-    var url2 = "AKfycby-4wgYlabbP6rh-itYVubNoFuWdLEcMBVAEHwDTj34cby78capT7zIB3edV7DAmKof8A";
-    var url = url1+url2+"/exec"+ "?action=readac";
-    $.getJSON(url, function(json) {
-        
-        for (var y=0; y<=json.records.length-2;y++){
-        //  console.log((y+1)+". "+json.records[y].YvidPlayList );
-      //document.getElementById("fevidlist").innerHTML += '<iframe src="' + json.records[y].YvidPlayList +
-     //  '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe><br>'; 
-      document.getElementById("fevidlist").innerHTML += "<div class='fvlist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+json.records[y].YvidPlayList +"></div>"  ;
-      document.getElementById("falseback").style.display = "none";
-      document.getElementById("fevidlist").style.display = "block";
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-
-        }
-     
-       
-    });
+    var url2 = "AKfycbx4K071l4kIp592qrsWJiErk3SmfLWLAkA3zhvUoesRkkhioj3WGDEzYoPU493Jmt0ilw";
+    var url = url1+url2+"/exec"+ "?callback=rdftrdytlst"+"&bbps="+dmdn+"&action=rdytlt";
+    makeAjRequest(url);
 }
+
+function rdftrdytlst(e){
+  if(e.records!="ID not found!"){
+    for (var y=0; y<=e.records.length-2;y++){
+    document.getElementById("fevidlist").innerHTML += "<div class='fvlist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].YvidPlayList +"></div>"  ;
+    document.getElementById("falseback").style.display = "none";
+    document.getElementById("fevidlist").style.display = "block";
+      }
+  }
+}
+
+function makeAjRequest(urlmi) {
+  var request = $.ajax({
+    crossDomain: true,
+    url: urlmi,
+    method: "GET",
+    dataType: "jsonp"
+  }); 
+}
+
 
 function showyouvid(label){
   var vid = label.value;
@@ -81,41 +86,44 @@ document.getElementById('rrbtn').addEventListener('click',showrrvidlist);
 function showrrvidlist(){
   $('#fevidlist').empty();
   $('#youvidlist').empty();
-  $('#vimvidlist').empty();
+  $('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
   document.getElementById("fevidlist").style.display = "none";
   document.getElementById("rrlist").style.display = "block";
   document.getElementById("falseback").style.display = "block";
   var url1 = "https://script.google.com/macros/s/";
-  var url2 = "AKfycbx4mGl-HnIkYx58Ki_V4IFkBM27n6KU21Ed1iAV5xhZ03TdnzWP6OyxLa1rvZu65GrS";
-  var url = url1+url2+"/exec"+ "?action=readac";
-  $.getJSON(url, function(json) {
-    for (var y=0; y<=json.records.length-2;y++){
-     // console.log(json.records[y].Yvid);
-      document.getElementById("youvidlist").innerHTML += "<div class='fvlist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+json.records[y].Yvid +"></div>"  ;
-      document.getElementById("falseback").style.display = "none";
-    } 
-});
-    var urlv1 = "https://script.google.com/macros/s/";
-    var urlv2 = "AKfycbx4mGl-HnIkYx58Ki_V4IFkBM27n6KU21Ed1iAV5xhZ03TdnzWP6OyxLa1rvZu65GrS";
-    var urlv = urlv1+urlv2+"/exec"+ "?action=read";
-    $.getJSON(urlv, function(json) {
-      for (var v=0; v<=json.records.length-2;v++){
-        document.getElementById("vimvidlist").innerHTML += "<div class='fvlist'>"+ (v+1)+". <input onclick='showyouvid(this)' value="+json.records[v].VPList +"></div>"  ;
-        document.getElementById("falseback").style.display = "none";
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }  
-    });
-   
+  var url2 = "AKfycbx4K071l4kIp592qrsWJiErk3SmfLWLAkA3zhvUoesRkkhioj3WGDEzYoPU493Jmt0ilw";
+  var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
+  makeAjRequest(urlvm);
+  var urlyt = url1+url2+"/exec"+  "?callback=rdftrdyt"+"&bbps="+dmdn+"&action=rdyt";
+  makeAjRequest(urlyt);
 }
-$(document).ready( function(){
 
+function rdftrdvm(e){
+  if(e.records!="ID not found!"){
+    for (var v=0; v<=e.records.length-2;v++){ 
+      document.getElementById("vimvidlist").innerHTML += "<div class='rrclist'>"+ (v+1)+". <input onclick='showyouvid(this)' value="+e.records[v].VPList +"></div>"  ;
+      document.getElementById("falseback").style.display = "none";
+      }
+  }
+}
+
+function rdftrdyt(e){
+  if(e.records!="ID not found!"){
+    for (var y=0; y<=e.records.length-2;y++){
+      document.getElementById("youvidlist").innerHTML += "<div class='rrclist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].Yvid +"></div>"  ;
+      document.getElementById("falseback").style.display = "none";
+      }
+  }
+}
+
+$(document).ready( function(){
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 
 });
 
 bizbotfrm.addEventListener('submit',(event)=>{
+  event.preventDefault();
   document.getElementById("falseback").style.display = "block";
   var btop =  escape($('#bbotpass').val());
   var ur1='https://script.google.com/macros/s/';
@@ -174,6 +182,7 @@ function verifyEmail() {
     else {
       return false;
     }
+    console.log(urscv);
   }
 function ctrlqchmail(e){
 var res = e.records;
@@ -221,3 +230,34 @@ function cpembody(){
   navigator.clipboard.writeText(textA.value);
 }
 */
+
+
+document.getElementById("srchfrm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  var input = document.getElementById("srchste").value; // Get input value
+  document.getElementById("modalText").innerHTML = input; // Set input value in modal
+  
+  var myModal = new bootstrap.Modal(document.getElementById("myModal")); // Initialize modal
+  myModal.show(); // Show modal
+});
+
+document.getElementById("urlForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var url = document.getElementById("urlInput").value;
+  var iframe = document.createElement("iframe");
+  var hideButton = document.createElement("button");
+  iframe.src = url;
+  document.getElementById("ifrmembd").innerHTML = "";
+  document.getElementById("ifrmembd").appendChild(iframe);
+  hideButton.id = 'hidefrmvw';
+  hideButton.textContent = "Close";
+  hideButton.addEventListener("click", function() {
+    document.getElementById("ifrmembd").innerHTML = "";
+    document.getElementById("ifrmembd").style.display = "none";
+    document.getElementById("hidefrmvw").remove();
+  });
+  document.getElementById("ifrmembd").style.display = "block";
+  document.getElementById("ifrmembd").appendChild(hideButton);
+});
+
