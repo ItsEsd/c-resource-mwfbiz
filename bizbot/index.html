@@ -15,9 +15,12 @@
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ItsEsd/mwfbiz-com@18d923c62ba501f852212d4828710d5319de36a8/image/favicon.png" type="image/png" sizes="180x180">
     <link rel="stylesheet" href="../vendor/style/font-awesome.4.7.0.min.css">
     <script src="../vendor/scripts/kit.fontawesome.js"></script>
-    <link rel="stylesheet" href="../vendor/style/bootstrap.3.4.1.min.css">
     <script src="../vendor/scripts/jquery.3.5.1.min.js"></script>
-    <script src="../vendor/scripts/bootstrap.3.4.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -28,45 +31,92 @@
 
 <body>
   <div align="center" id="signbot">
-    <form id="bizbotfrm" target="hiddenframe">
+    <form id="bizbotfrm">
     <input class="form-control" type="password" placeholder="************************" id="bbotpass" style="width:300px;text-align: center;" required><br>
     <input type="submit" value="Go >>" class="btn btn-primary" style="padding:6px 130px;">
     </form>
+    <div align = "center"><br><hr style="width:60%;max-width:350px;margin-top:0px;"><h4 style="color:#505050;padding-top:0px;font-weight: 600;">Mind Without Fear - MWF</h4><p style="color:#505050;">© mwfbiz.COM</p></div>
   </div>
-<div id="frameholder">
+<div id="frameholder"><span style="float:right;cursor:pointer;" onclick="$('#frameholder').hide();">close</span>
   <iframe id="showvidfrm" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
 </div>
-<div id="falseback" align="center">
+<div id="falseback" align="center" onclick="$(this).hide();">
     <img src="../image/loader-log.gif" style="padding-top:300px;background-color: transparent;width:50px;border-radius:6px;">
   </div>
-<div id="fevidlist"></div>
 
-<div id="rrlist" class="row">
-<div id="youvidlist" class="col-md-6"></div>
-<div id="vimvidlist" class="col-md-6"></div>
-</div>
+
+
 
 <section>
   <div align="center" id="btncontainer">
- <center><img width="100%" style="padding:20px;max-width: 600px;" src="bizbitpic.gif">  </center> 
-<div style="padding-top:35px;padding-bottom:35px;"><button class="btn btn-primary" id="fvlbtn">Featured Video List</button>
-<button class="btn btn-primary" id="rrbtn">Reel Random</button>
-<button class="btn btn-warning" id="resetpbiz">Create Reset Pass Link</button>
-<button class="btn btn-danger" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Webmail</button>
-<button class="btn btn-info" onclick='window.open("../prop/bit-edit.html","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>BitEdit</button>
+    <div class="row">
+      <div class="col-md-6" style="padding:20px;">
+        <center>
+          <form id="srchfrm">
+            <div class="row">  <div class="col-md-8">
+            <input class="form-control" id="srchste" type="text" style="width:100%;" placeholder="Embed Code" required></div>
+             <div class="col-md-3">
+            <input class="form-control" type="submit" style="width:100%;" value="Test"></div></div>
+          </form>
+          <div id="frmcontnr">
+          <iframe width="100%" src="https://admin.mwfbiz.com/toolkit/" id="edtrcnfrm"></iframe>
+        </div>
+        </center> 
+
+      </div>
+    <div class="col-md-6">
+      <div id="functnlt">
+        <button class="btn btn-primary" id="spchedt">Daily Nice</button>
+        <button class="btn btn-primary" id="fvlbtn">Featured List</button>
+        <button class="btn btn-primary" id="rrbtn">Reel Random</button>
+        <button class="btn btn-primary" id="edtgnsis">GENESIS</button>
+        <button class="btn btn-info" onclick='window.open("../prop/bit-edit.html","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>BitEdit</button>
+        <button class="btn btn-warning" id="resetpbiz">Create Reset Pass Link</button>
+        <button class="btn btn-danger" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Webmail</button>
+    </div>
+    <form id="urlForm">
+      <label for="urlInput">Enter URL:</label>
+      <input type="text" id="urlInput" name="urlInput" placeholder="https://example.com" required>
+      <button type="submit">iframe Check</button>
+    </form>
+    <div class="indxngon"><div id="ifrmembd"></div>
+    <div id="fevidlist"></div>
+    <div id="rrlist">
+      <div id="youvidlist"></div>
+      <div id="vimvidlist"></div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+      </div></div>
+  </div>
+</div>
 
 </div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Input Value</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalText"></p>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 </section>
 <section>
 <center><div id="repass"><div id="repass-tw">
 <form id="ckeckusem" align="left" onsubmit="return false">
 <input class="form-control" type="email" placeholder="Enter User Email" id="biusrem" required/>
 <div><br><input class="btn btn-danger"  type="submit" id="verem" value="Create Reset Link"/>
-<button class="btn btn-default" id="clsrest">Close</button></div>
+<button class="btn btn-dark" id="clsrest">Close</button></div>
 </form>
 </div>
-
+ 
 <input id="messagert"/>
 <div id="copmail">
 <div id="copmbody"></div><button class="btn btn-danger" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Send Mail</button>
@@ -75,7 +125,6 @@
 
 </section>
 
-<div align = "center"><hr style="width:60%;max-width:400px;margin-top:0px;"><h4 style="color:#505050;padding-top:0px;font-weight: 600;">Mind Without Fear - MWF</h4><p style="color:#505050;">© mwfbiz.COM</p></div>
 <script src="script.js"></script>
 <iframe name="hiddenframe" id="hiddenframe" style="display:none;"></iframe>
 </body>
