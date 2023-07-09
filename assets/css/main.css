@@ -467,7 +467,10 @@ nav a::before {
   background: #fff;
   margin-right: 30px;
   padding: 60px;
+  height: 325px;
+  overflow-y: auto;
 }
+
 .tabs-content h2 {
   font-size: 29px;
   text-transform: uppercase;
@@ -500,9 +503,18 @@ nav a::before {
 .featured-item {
   transition: all 0.5s;
   text-align: left;
+  overflow-wrap: break-word;
+  /* max-height: 400px; */
+}
+.down-content{
+  height: 200px;
+  overflow-y: auto;
+  font-size:14px;
 }
 .featured-item img {
   width: 100%;
+  max-height: 200px;
+  object-fit: fill;
 }
 .featured-item .down-content {
   background-color: #fff;
@@ -523,6 +535,20 @@ nav a::before {
   font-weight: 900;
   margin-bottom: 0px;
 }
+.down-content::-webkit-scrollbar{
+  width:5px;
+  height:5px;
+}
+.down-content::-webkit-scrollbar-thumb{
+  background-color: #8b8b8b;
+  border: 1px solid #dbdbdb;
+  border-radius: 15px;
+}
+.down-content::-webkit-scrollbar-track{
+  background-color: #dbdbdb;
+  padding:2px;
+}
+
 .owl-dots {
   text-align: center;
   margin-top: 30px;
