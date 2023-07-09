@@ -504,7 +504,7 @@ nav a::before {
   transition: all 0.5s;
   text-align: left;
   overflow-wrap: break-word;
-  /* max-height: 400px; */
+  height: 400px;
 }
 .down-content{
   height: 200px;
@@ -513,7 +513,7 @@ nav a::before {
 }
 .featured-item img {
   width: 100%;
-  max-height: 200px;
+  height: 200px;
   object-fit: fill;
 }
 .featured-item .down-content {
