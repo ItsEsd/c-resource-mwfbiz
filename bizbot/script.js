@@ -34,8 +34,8 @@ function makeAjRequest(urlmi) {
 function showyouvid(label){
   var vid = label.value;
   document.getElementById('showvidfrm').src= vid;
+  document.getElementById('frminptstr').value= vid;
   document.getElementById('frameholder').style.display = "block";
-  
 }
 
 dragElement(document.getElementById("frameholder"));
