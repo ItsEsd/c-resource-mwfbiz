@@ -96,7 +96,7 @@ cursor: pointer;
     position: fixed;
     cursor: move;
     width:380px;
-    height:220px;
+    height:230px;
     z-index:10;
     display: none;
     background-color: #0fd416;
@@ -127,14 +127,14 @@ cursor: pointer;
     display: none;
     width:100%;
     height:100%;
-    background-color: #f7a09a7c;
+    background-color: #131313af;
 }
 
 #repass-tw{
     padding:10px;
-    max-width:400px;
-    margin-top:40px;
-    background-color: #c5a206;
+    max-width:600px;
+    margin-top:5%;
+    background-color: #facb54;
 }
 
 
@@ -146,14 +146,16 @@ cursor: pointer;
 #messagert{
 margin-top:20px;
 width: 100%;
-max-width: 500px;
+max-width: 600px;
 padding:10px;
-background-color: #161616;
+background-color: #da0404;
 color:white;
 font-size:16px;
 text-align: left;
 display: none;
 overflow-x: auto;
+border:0px;
+border: 2px solid #facb54;
 }
 
 #copmail{
@@ -167,9 +169,12 @@ display: none;
     padding:10px;
 }
 #copmail button{
+    width:100%;
 margin-top:20px;
 margin-right: 0px;
    float: right;
+   background-color: #facb54;
+   padding:10px;
 }
 
 #frmcontnr{
@@ -203,9 +208,48 @@ background-color: #161616;
 
 #myModal img,#myModal iframe{
     width:100%;
-
+}
+#myCustomModal{
+    width:100%;
+    height:100%;
+    background-color: #2e2e2ecc;
+}
+#myCustomModal .modal-content{
+    width:100%;
+    height:80%;
+    max-width:600px;
+    margin:0 auto;
+    border-radius: 0px;
+    border:0px;
+    padding:10px;
+    margin-top:5%;
+}
+#myCustomModal .closefdlst{
+    top:0px;
+    right:0px;
+    position: absolute;
+    cursor:pointer;
+    float:right;
+    padding:5px 10px;
+    font-size: 20px;
+    background-color: #fd3b3b;
 }
 
+#videoContainer{
+    width:100%;
+    height:100%;
+    margin-top:10px;
+    padding:10px;
+    background-image: url('/image/vdfrmicon.png');
+    background-repeat: no-repeat;
+    background-size: 50% ;
+    background-color: #ffadad;
+    background-position: center;
+}
+#videoUrl{
+    margin-right:5px;
+    width:60%;
+}
 #functnlt{
     margin-top:20px;
     text-align: left;
@@ -256,3 +300,18 @@ text-align: left;
     background-color: #161616;
     border:0px;
   }
+#addfdlst{
+    width:100%;
+    border: 0px;
+    background-color: #0bb019;
+    color:white;
+    padding:10px; 
+}
+#addytvd,#addvmvd{
+    width:49%;
+    border: 0px;
+    background-color: #0bb019;
+    color:white;
+    padding:10px; 
+    margin:0px 2px;
+}
