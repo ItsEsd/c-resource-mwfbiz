@@ -1,12 +1,12 @@
 document.getElementById('fvlbtn').addEventListener('click',showfeatvidlist);
 function showfeatvidlist(){
-$('#fevidlist').empty();
+$('#fevidlist,.addvdmn').empty();
 $('#youvidlist').empty();
 $('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
 document.getElementById("rrlist").style.display = "none";
     document.getElementById("falseback").style.display = "block";
     var url1 = "https://script.google.com/macros/s/";
-    var url2 = "AKfycbx4K071l4kIp592qrsWJiErk3SmfLWLAkA3zhvUoesRkkhioj3WGDEzYoPU493Jmt0ilw";
+    var url2 = "AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
     var url = url1+url2+"/exec"+ "?callback=rdftrdytlst"+"&bbps="+dmdn+"&action=rdytlt";
     makeAjRequest(url);
 }
@@ -18,7 +18,146 @@ function rdftrdytlst(e){
     document.getElementById("falseback").style.display = "none";
     document.getElementById("fevidlist").style.display = "block";
       }
+      var addButton = document.createElement("button");
+      addButton.innerHTML = "Add Featured Video List";
+      addButton.id='addfdlst';
+      addButton.class='addvdmn';
+      addButton.addEventListener("click", function() {
+        var fntype = "ytlist";
+        showModal(fntype);
+      });
+    
+      var fevidlistDiv = document.getElementById("fevidlist");
+      fevidlistDiv.insertBefore(addButton, fevidlistDiv.firstChild);
+      
+      addButton.style.position = "sticky";
+      addButton.style.top = "0";
   }
+}
+
+// ///////////////////////////////
+var modal;
+var videoContainer;
+
+function showModal(fntype) {
+  modal = document.createElement("div");
+  modal.setAttribute("id", "myCustomModal");
+  modal.setAttribute("class", "modal");
+  
+  var modalContent = document.createElement("div");
+  modalContent.setAttribute("class", "modal-content");
+
+  var closeButton = document.createElement("span");
+  closeButton.setAttribute("class", "closefdlst");
+  closeButton.innerHTML = "&times;";
+  closeButton.addEventListener("click", function() {
+    closeModal();
+  });
+
+  var form = document.createElement("form");
+  form.setAttribute("id", "videoForm");
+
+  var inputField = document.createElement("input");
+  inputField.setAttribute("type", "text");
+  inputField.setAttribute("id", "videoUrl");
+  inputField.setAttribute("required", "required");
+
+  inputField.addEventListener("input", function(e) {
+    e.preventDefault();
+    var url = this.value;
+  var isValid = validateYouTubeUrl(url);
+  if (!isValid) {
+    alert("Please enter a valid link.");  this.value = "";
+  } else {
+     showVideoInModal();
+  }
+  });
+
+  function validateYouTubeUrl(url) {
+    var youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+    var vimeoPattern = /^(https?:\/\/)?(www\.)?(player.vimeo\.com)\/.+$/;
+    if(fntype =="ytlist" || fntype =="ytvid"){
+      return youtubePattern.test(url);
+    }
+    else if(fntype =="vmvid"){
+      return vimeoPattern.test(url);
+    }
+  }
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var url = document.getElementById("videoUrl").value;
+    updtytlst(url,fntype);
+  });
+
+  var submitButton = document.createElement("input");
+  submitButton.setAttribute("type", "submit");
+  submitButton.id="actnbtnup";
+  if(fntype =="ytlist"){
+    submitButton.setAttribute("value", "+ Add YouTube Video List");
+  }
+  else if(fntype =="ytvid"){
+    submitButton.setAttribute("value", "+ Add YouTube Video");
+  }
+  else if(fntype =="vmvid"){
+    submitButton.setAttribute("value", "+ Add Vimeo Video");
+  }
+
+  videoContainer = document.createElement("div");
+  videoContainer.setAttribute("id", "videoContainer");
+
+  form.appendChild(inputField);
+  form.appendChild(submitButton);
+  modalContent.appendChild(closeButton);
+  modalContent.appendChild(form);
+  modalContent.appendChild(videoContainer);
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  videoContainer.innerHTML = "";
+  document.getElementById("videoForm").reset();
+  modal.style.display = "none"; modal.innerHTML="";
+}
+
+function showVideoInModal() {
+  var url = document.getElementById("videoUrl").value;
+  videoContainer.innerHTML = "";
+  var iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.width = "100%";
+  iframe.height = "100%";
+  videoContainer.appendChild(iframe);
+}
+  function updtytlst(url,fntype){
+  document.getElementById('actnbtnup').disabled=true;
+  var dmdn = $('#bbotpass').val();
+  var ur1 = "https://script.google.com/macros/s/";
+  var ur2="AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
+  var urup = ur1+ur2+"/exec?callback=updtvlres&value="+escape(url)+"&bbps="+dmdn+"&action="
+  if(fntype ==="ytlist"){
+    var sndaj = urup + "inlist"; makeAjRequest(sndaj);
+  }
+  else if(fntype ==="ytvid"){
+    var sndaj = urup + "inytvd"; makeAjRequest(sndaj);
+  }
+  else if(fntype ==="vmvid"){
+    var sndaj = urup + "invmvd"; makeAjRequest(sndaj);
+  }
+  }
+// ///////////////////////////////
+function updtvlres(e){
+if(e.records =='updated'){
+  videoContainer.innerHTML = "";
+  document.getElementById("videoForm").reset();
+  document.getElementById('actnbtnup').disabled = false;
+}
+else{
+  document.getElementById('actnbtnup').disabled = false;
+}
 }
 
 function makeAjRequest(urlmi) {
@@ -29,7 +168,6 @@ function makeAjRequest(urlmi) {
     dataType: "jsonp"
   }); 
 }
-
 
 function showyouvid(label){
   var vid = label.value;
@@ -84,18 +222,43 @@ function dragElement(elmnt) {
 document.getElementById('rrbtn').addEventListener('click',showrrvidlist);
 
 function showrrvidlist(){
-  $('#fevidlist').empty();
+  $('#fevidlist').empty();$('.addvdmn').remove();
   $('#youvidlist').empty();
   $('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
   document.getElementById("fevidlist").style.display = "none";
   document.getElementById("rrlist").style.display = "block";
   document.getElementById("falseback").style.display = "block";
   var url1 = "https://script.google.com/macros/s/";
-  var url2 = "AKfycbx4K071l4kIp592qrsWJiErk3SmfLWLAkA3zhvUoesRkkhioj3WGDEzYoPU493Jmt0ilw";
-  var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
-  makeAjRequest(urlvm);
+  var url2 = "AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
   var urlyt = url1+url2+"/exec"+  "?callback=rdftrdyt"+"&bbps="+dmdn+"&action=rdyt";
   makeAjRequest(urlyt);
+  var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
+  makeAjRequest(urlvm);
+}
+
+
+function rdftrdyt(e){
+  if(e.records!="ID not found!"){
+    for (var y=0; y<=e.records.length-2;y++){
+      document.getElementById("youvidlist").innerHTML += "<div class='rrclist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].Yvid +"></div>"  ;
+      document.getElementById("falseback").style.display = "none";
+      }
+
+      var addButton = document.createElement("button");
+      addButton.innerHTML = "Add YouTube Video";
+      addButton.id='addytvd';
+      addButton.class='addvdmn';
+      addButton.addEventListener("click", function() {
+        var fntype = "ytvid";
+        showModal(fntype);
+      });
+    
+      var rrlist = document.getElementById("rrlist");
+      rrlist.insertBefore(addButton, rrlist.firstChild);
+      
+      addButton.style.position = "sticky";
+      addButton.style.top = "0";
+  }
 }
 
 function rdftrdvm(e){
@@ -104,16 +267,23 @@ function rdftrdvm(e){
       document.getElementById("vimvidlist").innerHTML += "<div class='rrclist'>"+ (v+1)+". <input onclick='showyouvid(this)' value="+e.records[v].VPList +"></div>"  ;
       document.getElementById("falseback").style.display = "none";
       }
-  }
-}
 
-function rdftrdyt(e){
-  if(e.records!="ID not found!"){
-    for (var y=0; y<=e.records.length-2;y++){
-      document.getElementById("youvidlist").innerHTML += "<div class='rrclist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].Yvid +"></div>"  ;
-      document.getElementById("falseback").style.display = "none";
-      }
-  }
+      var addButton = document.createElement("button");
+      addButton.innerHTML = "Add Vimeo Video";
+      addButton.id='addvmvd';
+      addButton.class='addvdmn';
+      addButton.addEventListener("click", function() {
+        var fntype = "vmvid";
+        showModal(fntype);
+      });
+    
+      var rrlist = document.getElementById("rrlist");
+      rrlist.insertBefore(addButton, rrlist.firstChild);
+      
+      addButton.style.position = "sticky";
+      addButton.style.top = "0";
+    }
+  
 }
 
 $(document).ready( function(){
@@ -163,7 +333,7 @@ document.getElementById("verem").addEventListener("click", verifyEmail);
 function verifyEmail() {
   $('#copmail').hide();
     var ur1 ="https://script.google.com/macros/s/";
-    var ur2="AKfycbxvBawTU7ggkrT-akgPHHlm1nmlacuKSTiSUFAwbL6jPVdojuP5xWwYv3ANwowk-UUh2g"
+    var ur2="AKfycbxeS5fAln2rPIti4G4wIVzG_j8zNfDFY_d99Qjt3j8JKYYC6_7ThxIWPFLmSBgOw-P-hw"
     var ursc = ur1+ur2+"/exec";
     var ml = $("#biusrem").val();
     if (ml != 0) {
@@ -176,13 +346,10 @@ function verifyEmail() {
         method: "GET",
         dataType: "jsonp"
       });
-
     }
-    
     else {
       return false;
     }
-    console.log(urscv);
   }
 function ctrlqchmail(e){
 var res = e.records;
