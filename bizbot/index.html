@@ -38,7 +38,7 @@
     <div align = "center"><br><hr style="width:60%;max-width:350px;margin-top:0px;"><h4 style="color:#505050;padding-top:0px;font-weight: 600;">Mind Without Fear - MWF</h4><p style="color:#505050;">© mwfbiz.COM</p></div>
   </div>
 <div id="frameholder">
-  <span style="float:right;cursor:pointer;" onclick="$('#frameholder').hide();">close</span><span style="float:left;"><input id="frminptstr" style="cursor:pointer;" type="text" onclick=" this.select();"/></span>
+  <span style="float:right;cursor:pointer;" onclick="$('#frameholder').hide();document.getElementById('showvidfrm').src='';">close</span><span style="float:left;"><input id="frminptstr" style="cursor:pointer;" type="text" onclick=" this.select();"/></span>
   <iframe id="showvidfrm" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
 </div>
 <div id="falseback" align="center" onclick="$(this).hide();">
@@ -115,9 +115,9 @@
 </form>
 </div>
  
-<input id="messagert"/>
+<input id="messagert" onclick="this.select();"/>
 <div id="copmail">
-<div id="copmbody"></div><button class="btn btn-danger" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Send Mail</button>
+<div id="copmbody"></div><button class="btn btn-warning" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Send Mail</button>
 </div>
 </div></center>
 
