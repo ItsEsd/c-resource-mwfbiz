@@ -5,7 +5,7 @@ var dmdn = $('#bbotpass').val();
     document.getElementById("fevidlist").style.display = "block";
     document.getElementById("falseback").style.display = "block";
     var url1 = "https://script.google.com/macros/s/";
-    var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+    var url2 = "AKfycbx-Ggr5HmTI-1hG_Mtdlg-l051t1O61PQRz_k_QNGmWOBtsiT_LyZmcQm6xxPoRQwheQA";
     var urlfv = url1+url2+"/exec"+ "?callback=rdftrdytlst"+"&bbps="+dmdn+"&action=rdytlt";
     makeAjRequest(urlfv);
    
@@ -48,7 +48,7 @@ function rdftrdytlst(e){
 
     var dmdn = $('#bbotpass').val();
     var url1 = "https://script.google.com/macros/s/";
-    var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+    var url2 = "AKfycbx-Ggr5HmTI-1hG_Mtdlg-l051t1O61PQRz_k_QNGmWOBtsiT_LyZmcQm6xxPoRQwheQA";
     var urlfpr = url1+url2+"/exec"+ "?callback=rdfprlst"+"&bbps="+dmdn+"&action=rdfpr";
     makeAjRequest(urlfpr);
   }
@@ -139,7 +139,7 @@ function showrrvidlist(){
   document.getElementById("fevidlist").style.display = "block";
   document.getElementById("falseback").style.display = "block";
   var url1 = "https://script.google.com/macros/s/";
-  var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+  var url2 = "AKfycbx-Ggr5HmTI-1hG_Mtdlg-l051t1O61PQRz_k_QNGmWOBtsiT_LyZmcQm6xxPoRQwheQA";
   var urlyt = url1+url2+"/exec"+  "?callback=rdftrdyt"+"&bbps="+dmdn+"&action=rdyt";
   makeAjRequest(urlyt);
   var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
@@ -291,7 +291,7 @@ function showVideoInModal() {
   document.getElementById('actnbtnup').disabled=true;
   var dmdn = $('#bbotpass').val();
   var ur1 = "https://script.google.com/macros/s/";
-  var ur2="AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+  var ur2="AKfycbx-Ggr5HmTI-1hG_Mtdlg-l051t1O61PQRz_k_QNGmWOBtsiT_LyZmcQm6xxPoRQwheQA";
   var urup = ur1+ur2+"/exec?callback=updtvlres&value="+escape(url)+"&bbps="+dmdn+"&action="
   if(fntype ==="ytlist"){
     var sndaj = urup + "inlist"; makeAjRequest(sndaj);
