@@ -1,0 +1,90 @@
+<div align="center" id="signbot">
+    <form id="bizbotfrm">
+    <input class="form-control" type="password" placeholder="************************" id="bbotpass" style="width:300px;text-align: center;" required><br>
+    <input type="submit" value="Go >>" class="btn btn-primary" style="padding:6px 130px;">
+    </form>
+    <div align = "center"><br><hr style="width:60%;max-width:350px;margin-top:0px;"><h4 style="color:#505050;padding-top:0px;font-weight: 600;">Mind Without Fear - MWF</h4><p style="color:#505050;">© mwfbiz.COM</p></div>
+  </div>
+<div id="frameholder">
+  <span style="float:right;cursor:pointer;" onclick="$('#frameholder').hide();document.getElementById('showvidfrm').src='';">close</span><span style="float:left;"><input id="frminptstr" style="cursor:pointer;" type="text" onclick=" this.select();"/></span>
+  <iframe id="showvidfrm" src="" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+<div id="falseback" align="center" onclick="$(this).hide();">
+    <img src="../image/loader-log.gif" style="padding-top:300px;background-color: transparent;width:50px;border-radius:6px;">
+  </div>
+
+<section>
+  <div align="center" id="btncontainer">
+    <div class="row">
+      <div class="col-md-6" style="padding:20px;">
+        <center>
+          <form id="srchfrm">
+            <div class="row">  <div class="col-md-8">
+            <input class="form-control" id="srchste" type="text" style="width:100%;" placeholder="Embed Code" required></div>
+             <div class="col-md-3">
+            <input class="form-control" type="submit" style="width:100%;" value="Test"></div></div>
+          </form>
+          <div id="frmcontnr">
+          <iframe width="100%" src="https://admin.mwfbiz.com/toolkit/" id="edtrcnfrm"></iframe>
+        </div>
+        </center> 
+
+      </div>
+    <div class="col-md-6">
+      <div id="functnlt">
+        <button class="btn btn-primary" id="spchedt">Daily Nice</button>
+        <button class="btn btn-primary" id="fvlbtn">Featured List</button>
+        <button class="btn btn-primary" id="rrbtn">Reel Random</button>
+        <button class="btn btn-primary" id="edtgnsis">GENESIS</button>
+        <button class="btn btn-info" onclick='window.open("../prop/bit-edit.html","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>BitEdit</button>
+        <button class="btn btn-warning" id="resetpbiz">Create Reset Pass Link</button>
+        <button class="btn btn-danger" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Webmail</button>
+    </div>
+    <form id="urlForm">
+      <label for="urlInput">Enter URL:</label>
+      <input type="text" id="urlInput" name="urlInput" placeholder="https://example.com" required>
+      <button type="submit">iframe Check</button>
+    </form>
+    <div class="indxngon"><div id="ifrmembd"></div>
+    <div id="fevidlist"></div></div>
+  </div>
+</div>
+
+</div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Input Value</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalText"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+<section>
+<center><div id="repass"><div id="repass-tw">
+<form id="ckeckusem" align="left" onsubmit="return false">
+<input class="form-control" type="email" placeholder="Enter User Email" id="biusrem" required/>
+<div><br><input class="btn btn-danger"  type="submit" id="verem" value="Create Reset Link"/>
+<button class="btn btn-dark" id="clsrest">Close</button></div>
+</form>
+</div>
+ 
+<input id="messagert" onclick="this.select();"/>
+<div id="copmail">
+<div id="copmbody"></div><button class="btn btn-warning" onclick='window.open("https://email.godaddy.com","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=400")'>Send Mail</button>
+</div>
+</div></center>
+
+</section>
+
+<script src="script.js"></script>
+<iframe name="hiddenframe" id="hiddenframe" style="display:none;"></iframe>
