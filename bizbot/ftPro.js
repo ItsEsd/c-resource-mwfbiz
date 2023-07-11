@@ -43,14 +43,14 @@ function addImageField() {
 
     for (var j = 0; j < imageUrls.length; j++) {
       generatedHTML.innerHTML += `
-        <img src="${imageUrls[j]}" width="100%">
+        <img src="`+imageUrls[j]+`" width="100%">
         <hr>
       `;
     }
 
     generatedHTML.innerHTML += `
       <div class="embed-responsive embed-responsive-16by9" align="center">
-        <iframe class="embed-responsive-item" width="560" height="315" src="${videoInput}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <iframe class="embed-responsive-item" width="560" height="315" src="`+videoInput+`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
       </div>
       <hr>
     `;
@@ -98,13 +98,13 @@ document.getElementById("fprgens").addEventListener("input", function(e) {
       var fprthumb = document.getElementById("fprthumb").value;
       var fprmqt = document.getElementById("fprmqt").value;
       var fprftv = document.getElementById("fprftv").value;
-      var mdlq = `</div></div><div align="center"><span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="${fprmqt}" width="90%"></span>
+      var mdlq = `</div></div><div align="center"><span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="`+fprmqt+`" width="90%"></span>
           </div>
           <hr>`;
-      var ftvd = `<div class="embed-responsive embed-responsive-16by9" align="center"><iframe class="embed-responsive-item" width="560" height="315" src="${fprftv}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      var ftvd = `<div class="embed-responsive embed-responsive-16by9" align="center"><iframe class="embed-responsive-item" width="560" height="315" src="`+fprftv+`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
       if(fprnm!=""&&fprgens!=""&&fprthumb!=""&&fprmqt!=""&&fprftv!=""&&mdlq!=""){
-     generatedHTMLfl.innerHTML = `<div class="Name">${fprnm}</div><hr style="width:50%;"><div align="center">
-          <a href="${fprgens}" target="_parent"><img src="${fprthumb}" width="70%" class="imgC" ></a></div>
+     generatedHTMLfl.innerHTML = `<div class="Name">`+fprnm+`</div><hr style="width:50%;"><div align="center">
+          <a href="`+fprgens+`" target="_parent"><img src="`+fprthumb+`" width="70%" class="imgC" ></a></div>
           <hr style="width:70%;">`+mdlq+ftvd;
 
           document.getElementById("generatedHTMLfl").innerHTML = "";
@@ -150,18 +150,18 @@ var dmdn = $('#bbotpass').val();
     `;
     for (var j = 0; j < imageUrls.length; j++) {
       hqhtm += `
-        <img src="${imageUrls[j]}" width="100%">
+        <img src="`+imageUrls[j]+`" width="100%">
         <hr>
       `;
     }
     hqhtm += `
       <div class="embed-responsive embed-responsive-16by9" align="center">
-        <iframe class="embed-responsive-item" width="560" height="315" src="${videoInput}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <iframe class="embed-responsive-item" width="560" height="315" src="`+videoInput+`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
       </div>
       <hr>
     `;
-  var mdlq = `</div></div><div align="center"><span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="${fprmqt}" width="90%"></span></div><hr>`;
-  var ftvd = `<div class="embed-responsive embed-responsive-16by9" align="center"><iframe class="embed-responsive-item" width="560" height="315" src="${fprftv}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+  var mdlq = `</div></div><div align="center"><span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="`+fprmqt+`" width="90%"></span></div><hr>`;
+  var ftvd = `<div class="embed-responsive embed-responsive-16by9" align="center"><iframe class="embed-responsive-item" width="560" height="315" src="`+fprftv+`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
   var gurj = hqhtm + mdlq + ftvd; 
   gurj = minifyHTML(gurj);
   var ur1 = "https://script.google.com/macros/s/";
