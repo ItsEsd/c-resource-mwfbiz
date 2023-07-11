@@ -325,8 +325,7 @@ text-align: left;
     margin:0px 2px;
 }
 
-/* Featured Profile Insert*/
-#fprupdt{
+#fprupdt,#dnicemn{
 top:0px;
 left:0px;
 position: fixed;
@@ -335,13 +334,13 @@ background-color: #161616a7;
 color:white;
 }
 
-#myFormpedt input{
+#myFormpedt input,#dnicefrm input{
     width:100%;
 }
-#myFormpedt label{
+#myFormpedt label,#dnicefrm label{
     float: left;
 }
-#myFormpedt{
+#myFormpedt,#dnicefrm{
     width:100%;
     max-width: 700px;
     height:100vh;
@@ -355,7 +354,7 @@ color:white;
     width: 100%;
    height: auto;
 }
-#generatedHTMLhq,#generatedHTMLfl{
+#generatedHTMLhq,#generatedHTMLfl,#dncqandt,#dncfull{
     top:0px;
     position: fixed;
     width: 100%;
@@ -367,14 +366,41 @@ color:white;
     display: none;
     color:white;
 }
+#dncqandt,#dncfull{
+    padding-top:10px;
+    padding-bottom:40px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0%;
+    /* max-width: 700px; */
+}
+#dncqandt a,#dncfull a{
+text-decoration: none;
+}
+.hpinImg{
+    width: 100%;
+}
+#fprupdt iframe,#dnicemn iframe{
+    width:100%;
+    height:600px;
+}
+
+.facebook-responsive {
+  width:100%;
+  margin-bottom:20px;
+  }
+.nwresdv{
+max-width: 700px;
+}
 #generatedHTMLhq hr,#generatedHTMLfl hr{border-color: white;}
 .close{
     float:right;
     cursor: pointer;
 }
-#fprupdt iframe{
+
+.prvhtmdnc{
     width:100%;
-    height:600px;
+    max-width: 800px;
 }
 .prevprim{
 width:48% !important;
@@ -405,7 +431,27 @@ color:#dddddd;
     padding-bottom: 5px;
     border-bottom: 1px solid #979797;
 }
-
+#clsdncqt,#clsdncqtf{
+    bottom:0px;
+    right:0px;
+    width:100%;
+    position: fixed;
+    background-color: #ff4444;
+    border:0px;
+    padding:0px 10px;
+    font-size: 16px;
+}
+#dncqnthld{
+    margin:5px;
+    padding:10px;
+    background-color: #2e2e2e;
+}
+#dncqnthld p{
+    text-align: left;
+    padding-bottom: 5px;
+    font-weight: 600;
+    border-bottom: 1px solid #979797;
+}
 .divisionfpr {
     padding:5px;
     padding-top:20px;
