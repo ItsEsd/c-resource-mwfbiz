@@ -1,41 +1,196 @@
 document.getElementById('fvlbtn').addEventListener('click',showfeatvidlist);
 function showfeatvidlist(){
-$('#fevidlist,.addvdmn').empty();
-$('#youvidlist').empty();
-$('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
-document.getElementById("rrlist").style.display = "none";
+$('#fevidlist').empty();$('.addvdmn').remove();  $('.genlstsht').empty();
+var dmdn = $('#bbotpass').val();
+    document.getElementById("fevidlist").style.display = "block";
     document.getElementById("falseback").style.display = "block";
     var url1 = "https://script.google.com/macros/s/";
-    var url2 = "AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
-    var url = url1+url2+"/exec"+ "?callback=rdftrdytlst"+"&bbps="+dmdn+"&action=rdytlt";
-    makeAjRequest(url);
+    var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+    var urlfv = url1+url2+"/exec"+ "?callback=rdftrdytlst"+"&bbps="+dmdn+"&action=rdytlt";
+    makeAjRequest(urlfv);
+   
 }
 
 function rdftrdytlst(e){
   if(e.records!="ID not found!"){
     for (var y=0; y<=e.records.length-2;y++){
     document.getElementById("fevidlist").innerHTML += "<div class='fvlist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].YvidPlayList +"></div>"  ;
-    document.getElementById("falseback").style.display = "none";
     document.getElementById("fevidlist").style.display = "block";
       }
-      var addButton = document.createElement("button");
-      addButton.innerHTML = "Add Featured Video List";
-      addButton.id='addfdlst';
-      addButton.class='addvdmn';
-      addButton.addEventListener("click", function() {
-        var fntype = "ytlist";
-        showModal(fntype);
-      });
     
-      var fevidlistDiv = document.getElementById("fevidlist");
-      fevidlistDiv.insertBefore(addButton, fevidlistDiv.firstChild);
-      
-      addButton.style.position = "sticky";
-      addButton.style.top = "0";
+    var addButton = document.createElement("button");
+    addButton.innerHTML = "Add Featured Video List";
+    addButton.id='addfdlst';
+    addButton.className='addvdmn';
+    addButton.addEventListener("click", function() {
+      var fntype = "ytlist";
+      showModal(fntype);
+    });
+  
+    var fevidlistDiv = document.getElementById("fevidlist");
+    fevidlistDiv.insertBefore(addButton, fevidlistDiv.firstChild);
+    
+    addButton.style.position = "sticky";
+    addButton.style.top = "0";
+    var fprbtn = document.createElement("button");
+    fprbtn.innerHTML = "Add Featured Profile";
+    fprbtn.id = 'addfprbtn';
+    fprbtn.className = 'addfprup';
+    fprbtn.addEventListener("click", function() {
+      $('#fprupdt').show();
+    });
+
+    fevidlistDiv.insertBefore(fprbtn, fevidlistDiv.firstChild);
+
+
+    fprbtn.style.position = "sticky";
+    fprbtn.style.top = "0";
+
+    var dmdn = $('#bbotpass').val();
+    var url1 = "https://script.google.com/macros/s/";
+    var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+    var urlfpr = url1+url2+"/exec"+ "?callback=rdfprlst"+"&bbps="+dmdn+"&action=rdfpr";
+    makeAjRequest(urlfpr);
   }
 }
 
-// ///////////////////////////////
+function rdfprlst(e) {
+  if (e.records != "ID not found!") {
+    document.getElementById("falseback").style.display = "none";  
+    var elmnw = document.createElement('div');
+    elmnw.id = "fpropv";
+    var inputValues = []; // Array to store input values
+    var inputValuesGN = [];
+    for (var y = 0; y <= e.records.length - 2; y++) {
+
+      var profileDiv = document.createElement('div');
+      profileDiv.className = 'divisionfpr';
+
+      var image = document.createElement('img');
+      image.src = e.records[y].ImageLink;
+      image.alt = 'Image';
+      image.className = 'imagefpr';
+
+      var contentDiv = document.createElement('div');
+      contentDiv.className = 'contentfpr';
+
+      var title = document.createElement('p');
+      title.className = 'titlefpr';
+      title.innerText = e.records[y].Name;
+
+      var inputGroup = document.createElement('div');
+      inputGroup.className = 'input-groupfpr';
+
+      var input1 = document.createElement('input');
+      input1.type = 'text';
+      input1.className = 'inputfprgn';
+      input1.value = e.records[y].PLink;
+      inputValuesGN.push(e.records[y].PLink);
+
+      var input2 = document.createElement('input');
+      input2.type = 'text';
+      input2.className = 'inputfpr';
+      inputValues.push(e.records[y].Guj); // Store the input value
+      // Do not set the value here, it will be set after the elements are appended
+
+      var bioCategory = document.createElement('p');
+      var bioSpan = document.createElement('span');
+      bioSpan.className = 'fprbctg1';
+      bioSpan.innerText = e.records[y].Bio;
+      var categorySpan = document.createElement('span');
+      categorySpan.className = 'fprbctg2';
+      categorySpan.innerText = e.records[y].Category;
+
+      inputGroup.appendChild(input1);
+      inputGroup.appendChild(input2);
+
+      bioCategory.appendChild(bioSpan);
+      bioCategory.appendChild(categorySpan);
+
+      contentDiv.appendChild(title);
+      contentDiv.appendChild(inputGroup);
+      contentDiv.appendChild(bioCategory);
+
+      profileDiv.appendChild(image);
+      profileDiv.appendChild(contentDiv);
+
+      elmnw.appendChild(profileDiv);
+    }
+
+    var fevidlistDiv = document.getElementById("fevidlist");
+    fevidlistDiv.appendChild(elmnw);
+
+    // Set the input values after elements have been appended
+    var inputElements = elmnw.getElementsByClassName("inputfpr");
+    var inputElementsGN = elmnw.getElementsByClassName("inputfprgn");
+    for (var i = 0; i < inputElements.length; i++) {
+      inputElements[i].value = inputValues[i];
+      inputElementsGN[i].value = inputValuesGN[i];
+    }
+  }
+}
+
+
+document.getElementById('rrbtn').addEventListener('click',showrrvidlist);
+
+function showrrvidlist(){
+  $('#fevidlist').empty(); $('.addvdmn').remove();  $('.genlstsht').empty();
+  var dmdn = $('#bbotpass').val();
+  document.getElementById("fevidlist").style.display = "block";
+  document.getElementById("falseback").style.display = "block";
+  var url1 = "https://script.google.com/macros/s/";
+  var url2 = "AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
+  var urlyt = url1+url2+"/exec"+  "?callback=rdftrdyt"+"&bbps="+dmdn+"&action=rdyt";
+  makeAjRequest(urlyt);
+  var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
+  makeAjRequest(urlvm);
+}
+
+
+
+function rdftrdvm(e){
+  if(e.records!="ID not found!"){
+    for (var v=0; v<=e.records.length-2;v++){ 
+      document.getElementById("fevidlist").innerHTML += "<div class='rrclistvm'>"+ (v+1)+". <input onclick='showyouvid(this)' value="+e.records[v].VPList +"></div>"  ;
+      document.getElementById("falseback").style.display = "none";
+      }
+      var addButtonvm = document.createElement("button");
+      addButtonvm.innerHTML = "Add Vimeo Video";
+      addButtonvm.id='addvmvd';
+      addButtonvm.className='addvdmn';
+      addButtonvm.addEventListener("click", function() {
+        var fntypev = "vmvid";
+        showModal(fntypev);
+      });
+      var fevidlistDiv = document.getElementById("fevidlist");
+      fevidlistDiv.insertBefore(addButtonvm, fevidlistDiv.firstChild);
+      addButtonvm.style.position = "sticky";
+      addButtonvm.style.top = "0";
+      var addButton = document.createElement("button");
+      addButton.innerHTML = "Add YouTube Video";
+      addButton.id='addytvd';
+      addButton.className='addvdmn';
+      addButton.addEventListener("click", function() {
+        var fntypey = "ytvid";
+        showModal(fntypey);
+      });
+      var fevidlistDiv = document.getElementById("fevidlist");
+      fevidlistDiv.insertBefore(addButton, fevidlistDiv.firstChild);
+      addButton.style.position = "sticky";
+      addButton.style.top = "0";
+    }
+  
+}
+
+function rdftrdyt(e){
+  if(e.records!="ID not found!"){
+    for (var y=0; y<=e.records.length-2;y++){
+      document.getElementById("fevidlist").innerHTML += "<div class='rrclistyt'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].Yvid +"></div>"  ;
+      document.getElementById("falseback").style.display = "none";
+      }
+  }
+}
+
 var modal;
 var videoContainer;
 
@@ -136,7 +291,7 @@ function showVideoInModal() {
   document.getElementById('actnbtnup').disabled=true;
   var dmdn = $('#bbotpass').val();
   var ur1 = "https://script.google.com/macros/s/";
-  var ur2="AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
+  var ur2="AKfycbyF0cezcmDcphcte7BsYMsVpdwDVHDgofZ72VLtGuStEU9rgtEVcCDcL1lo4qPJlfv80A";
   var urup = ur1+ur2+"/exec?callback=updtvlres&value="+escape(url)+"&bbps="+dmdn+"&action="
   if(fntype ==="ytlist"){
     var sndaj = urup + "inlist"; makeAjRequest(sndaj);
@@ -148,7 +303,7 @@ function showVideoInModal() {
     var sndaj = urup + "invmvd"; makeAjRequest(sndaj);
   }
   }
-// ///////////////////////////////
+
 function updtvlres(e){
 if(e.records =='updated'){
   videoContainer.innerHTML = "";
@@ -175,6 +330,30 @@ function showyouvid(label){
   document.getElementById('frminptstr').value= vid;
   document.getElementById('frameholder').style.display = "block";
 }
+document.getElementById('edtgnsis').addEventListener('click',showgenslist);
+function showgenslist(){
+  $('#fevidlist').empty();$('.addvdmn').remove();  $('.genlstsht').empty();
+  document.getElementById("fevidlist").style.display = "block";
+  document.getElementById("fevidlist").innerHTML = `<div class="genlstsht">
+  <base target="_blank">
+    <a href="https://docs.google.com/spreadsheets/d/1NShTlqvTV3Y9kjTTgvyoLBzEESgAglm6PhRARAI_t4w/edit#gid=0">
+      <button>Past All</button>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1YXULwUnKuzWEAz_ap6hmw9pTw4-j1cvMG-l2V778edI/edit#gid=0">
+      <button>Science & Society</button>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1nWQyrsjM9tYEUZkjYkxtL9Fh3T3cJcz3xbLhsdHTYoA/edit#gid=0">
+      <button>Sports & Games</button>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1KYmScctKVNBIWQ2EbA9IT8SSuJfYD7f4QMNPdSqnnFc/edit#gid=0">
+      <button>Art & Culture</button>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1ac0JRnVUJIX8YYrGQSM5ZkoTOS0OhCFLZMkHksFRcIc/edit#gid=0">
+      <button>Enterprising</button>
+    </a>
+  </div>`;
+}
+
 
 dragElement(document.getElementById("frameholder"));
 
@@ -219,72 +398,6 @@ function dragElement(elmnt) {
   }
 }
 
-document.getElementById('rrbtn').addEventListener('click',showrrvidlist);
-
-function showrrvidlist(){
-  $('#fevidlist').empty();$('.addvdmn').remove();
-  $('#youvidlist').empty();
-  $('#vimvidlist').empty();var dmdn = $('#bbotpass').val();
-  document.getElementById("fevidlist").style.display = "none";
-  document.getElementById("rrlist").style.display = "block";
-  document.getElementById("falseback").style.display = "block";
-  var url1 = "https://script.google.com/macros/s/";
-  var url2 = "AKfycbxg01AOKguvsDoz5E6d_lL0Xv9ye1yWsbY-59d7SPYsE8EEwDHbqk9hVdaRVUl0kYUiYA";
-  var urlyt = url1+url2+"/exec"+  "?callback=rdftrdyt"+"&bbps="+dmdn+"&action=rdyt";
-  makeAjRequest(urlyt);
-  var urlvm = url1+url2+"/exec"+  "?callback=rdftrdvm"+"&bbps="+dmdn+"&action=rdvm";
-  makeAjRequest(urlvm);
-}
-
-
-function rdftrdyt(e){
-  if(e.records!="ID not found!"){
-    for (var y=0; y<=e.records.length-2;y++){
-      document.getElementById("youvidlist").innerHTML += "<div class='rrclist'>"+ (y+1)+". <input onclick='showyouvid(this)' value="+e.records[y].Yvid +"></div>"  ;
-      document.getElementById("falseback").style.display = "none";
-      }
-
-      var addButton = document.createElement("button");
-      addButton.innerHTML = "Add YouTube Video";
-      addButton.id='addytvd';
-      addButton.class='addvdmn';
-      addButton.addEventListener("click", function() {
-        var fntype = "ytvid";
-        showModal(fntype);
-      });
-    
-      var rrlist = document.getElementById("rrlist");
-      rrlist.insertBefore(addButton, rrlist.firstChild);
-      
-      addButton.style.position = "sticky";
-      addButton.style.top = "0";
-  }
-}
-
-function rdftrdvm(e){
-  if(e.records!="ID not found!"){
-    for (var v=0; v<=e.records.length-2;v++){ 
-      document.getElementById("vimvidlist").innerHTML += "<div class='rrclist'>"+ (v+1)+". <input onclick='showyouvid(this)' value="+e.records[v].VPList +"></div>"  ;
-      document.getElementById("falseback").style.display = "none";
-      }
-
-      var addButton = document.createElement("button");
-      addButton.innerHTML = "Add Vimeo Video";
-      addButton.id='addvmvd';
-      addButton.class='addvdmn';
-      addButton.addEventListener("click", function() {
-        var fntype = "vmvid";
-        showModal(fntype);
-      });
-    
-      var rrlist = document.getElementById("rrlist");
-      rrlist.insertBefore(addButton, rrlist.firstChild);
-      
-      addButton.style.position = "sticky";
-      addButton.style.top = "0";
-    }
-  
-}
 
 $(document).ready( function(){
   document.body.scrollTop = 0;
@@ -327,7 +440,6 @@ else{
   $('#repass').hide();
 })
 
-/////////////////////////////
 
 document.getElementById("verem").addEventListener("click", verifyEmail);
 function verifyEmail() {
@@ -382,22 +494,6 @@ else{
 }
 
 }
-
-/*
-$('#copyem').click(function(){
-  cpembody();
-});
-
-function cpembody(){
-  var embody = document.getElementById('copmbody').innerHTML;
-  var textA = document.createElement("input");
-  textA.value = embody;
-  textA.select();
-  textA.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(textA.value);
-}
-*/
-
 
 document.getElementById("srchfrm").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent form submission
