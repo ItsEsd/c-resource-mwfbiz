@@ -18,77 +18,73 @@
     }
     #demon{
       width:100%;
-      height:500px;
+      height:80vh;
       overflow-y:scroll;
-      border:2px solid grey;
       max-width:680px;
       background-color: #161616;
       padding:4px;
+      outline:none;
     }
     
     #txt{
-      bottom:50px;
-      right:10px;
-      position: fixed;
       line-height:20px;
-      height:500px;
+      height:91vh;
       overflow-y:scroll;
       width:100%;
-      max-width:300px;
-      margin-top:10px; 
-      background-color: white;
-      border-radius:4px;
-      display: none;
+      margin:5px auto; 
+      background-color: #c1c1c1;
+      border-radius:5px;
+      display: block;
+      padding:5px;
+      border:1px solid #00000095;
     }
-    
+     
     #basehtm{
       width:98%;
       margin-bottom:10px;
       max-width:680px; 
-      background-color: white;
+      background-color: #484848;
       padding:4px;
       border-radius:4px;
-
+      color:white;
+      border:2px solid black;
     }
     #mailto{
-        bottom:10px;
-        left:10px;
-        position: fixed;
         font-size: 12px;
-        text-align: left;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-    }
-
-    #showcted{
-   bottom:10px;
-   right:10px;
-   position: fixed;
-   font-size: 14px;
-   padding:4px 14px;
+        width: 100%;
+        color:#00000095;
     }
 
     #titlepg{
       text-align:left;
-      max-width:680px;
+      padding:10px;
       padding-top:10px;
-      color:rgba(0, 0, 0, 0.664);
+      padding-left:5px;
+      color:#000000a9;
     }
-   
+  #demon .embdcon,#demon iframe,#demon img{
+    width:100%;
+   }
     </style>
     </head>
     <body>
     <center>
-    <h4 id="titlepg">|| Bit Edit - Property of mwfbiz.COM</h4>
-    <input id="basehtm" placeholder="Copy / Paste Elem.."/>
-    <div id="demon" contenteditable="true"></div>
-    <textarea id="txt" type="text" placeholder="Edit.."></textarea>
-    <button class="btn btn-dark" id="showcted">Custom Edit</button>
-    <span id="mailto">
-      <a href="https://mwfbiz.com/" >mwfbiz.COM</a><br/>
-      <a href="mailto:info@mwfbiz.com">info@mwfbiz.com</a>
-    </span> 
-</center> 
+      <div class="row">
+        <div class="col-md-6">
+          <h4 id="titlepg">|| Bit Edit - Property of mwfbiz.COM</h4>
+          <input id="basehtm" placeholder="Copy / Paste" onclick="this.select();"/>
+          <div id="demon" contenteditable="true"></div>
+
+        </div>
+        <div class="col-md-6">
+          <textarea id="txt" type="text" placeholder="Edit"></textarea>
+         <p style="width:100%"> <span id="mailto">
+            <span style="float:right;">Copyright ©️ <a href="https://mwfbiz.com/" >mwfbiz.COM</a></span>
+            <span style="float:left;">Contact: <a href="mailto:info@mwfbiz.com">info@mwfbiz.com</a></span>
+          </span> </p>
+        </div>
+      </div>
+    </center> 
     <script>
     var inhtm = document.getElementById('basehtm');
     inhtm.addEventListener('input',showconhtm);
@@ -116,8 +112,5 @@
     var conmtw = btoa(escape(mtw));
     document.getElementById('basehtm').value = conmtw;
     }
-$('#showcted').click(function(){
-$('#txt').toggle('fast');
-});
     </script>
     </body></html>
