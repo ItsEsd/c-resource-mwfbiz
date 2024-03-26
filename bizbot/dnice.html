@@ -1,31 +1,67 @@
-<div id="dnicemn" align="center" style="display: none;">
-<form id="dnicefrm">
+<div id="dnicemn" align="center" style="display: none">
+  <form id="dnicefrm">
     <label for="dncttl">Title:</label>
-    <input type="text" id="dncttl" required><br><br>
+    <input type="text" id="dncttl" required /><br /><br />
     <label for="dncthumb">Img Thumbnail:</label>
-    <input type="url" id="dncthumb" required><br><br>
+    <input type="url" id="dncthumb" required /><br /><br />
     <label for="dncplnk">Poetry Link:</label>
-    <input type="url" id="dncplnk" required><br><br>
-    <label for="dncpfvd">iframe Content <span style="font-size: 12px;">(<a href="https://facebook.com/watch">facebook</a> / <a href="https://podcasts.apple.com/us/genre/podcasts/id26">Podcast</a> / <a href="https://qubit.mwfbiz.com">QuBit</a>)</span>:</label>
-    <input type="text" id="dncpfvd" required><br><br>
-    <div id="dncqnthld"><p>Quotes & Thoughts</p>
-    <label for="dncqut">Quote:</label>
-    <input type="text" id="dncqut" required><br><br>
-    <label for="dncqtah">Author:</label>
-    <input type="text" id="dncqtah" required><br><br>
-    <label for="dncqtarf">Author Ref. Link:</label>
-    <input type="text" id="dncqtarf" required><br><br>
-    <label for="dncqtimg">Quote Image:</label>
-    <input type="url" id="dncqtimg" required><br><br>
-    <label for="dncqtvd">Motive Video:</label>
-    <input type="url" id="dncqtvd" required><br></div><br>
-    <center> <input type="button" class="prevprim" value="Preview Quotes & Thoughts" id="showdncqt">
-        <input type="button"  class="prevprim" value="Preview Daily Nice" id="showdncful">
-        <input type="submit"  class="prevsecn btn btn-danger" value="Update" id="updnc">
-        <input type="button"  class="prevsecn btn btn-primary" value="Close" id="clsdncup" onclick="$('#dnicemn').hide();">
-      </center>
-</form>
-<center><div style="width:100%;top:0px;left:0px;position: fixed;"><div id="dncqandt"></div>
-<div id="dncfull"></div></center>
+    <input type="url" id="dncplnk" required /><br /><br />
+    <label for="dncpfvd"
+      >iframe Content
+      <span style="font-size: 12px"
+        >(<a href="https://facebook.com/watch">facebook</a> /
+        <a href="https://podcasts.apple.com/us/genre/podcasts/id26">Podcast</a>
+        / <a href="https://qubit.mwfbiz.com">QuBit</a>)</span
+      >:</label
+    >
+    <input type="text" id="dncpfvd" required /><br /><br />
+    <div id="dncqnthld">
+      <p>Quotes & Thoughts</p>
+      <label for="dncqut">Quote:</label>
+      <input type="text" id="dncqut" required /><br /><br />
+      <label for="dncqtah">Author:</label>
+      <input type="text" id="dncqtah" required /><br /><br />
+      <label for="dncqtarf">Author Ref. Link:</label>
+      <input type="text" id="dncqtarf" required /><br /><br />
+      <label for="dncqtimg">Quote Image:</label>
+      <input type="url" id="dncqtimg" required /><br /><br />
+      <label for="dncqtvd">Motive Video:</label>
+      <input type="url" id="dncqtvd" required /><br />
+    </div>
+    <br />
+    <center>
+      <input
+        type="button"
+        class="prevprim"
+        value="Preview Quotes & Thoughts"
+        id="showdncqt"
+      />
+      <input
+        type="button"
+        class="prevprim"
+        value="Preview Daily Nice"
+        id="showdncful"
+      />
+      <input
+        type="submit"
+        class="prevsecn btn btn-danger"
+        value="Update"
+        id="updnc"
+      />
+      <input
+        type="button"
+        class="prevsecn btn btn-primary"
+        value="Close"
+        id="clsdncup"
+        onclick="$('#dnicemn').hide();"
+      />
+    </center>
+  </form>
+  <center>
+    <div id="prevdnc">
+      <div id="dncqandt"></div>
+      <div id="dncfull"></div>
+    </div>
+  </center>
 </div>
 <script src="dnc-scrpt.js"></script>
